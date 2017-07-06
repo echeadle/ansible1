@@ -4,6 +4,7 @@
   rpm_key:
     state: present
     key: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+  become: true
 
 - name: add repofile to /etc/yum.repos.d/
   copy:
@@ -12,9 +13,16 @@
     owner: root
     group: root
     mode: 0644
+  become: true
 
 - name: install elasticsearch
   yum:
     name: elasticsearch
     state: present
-    
+  become: true
+
+- name: Start elasticsearch
+  service: 
+    name: elasticsearch
+    state: started 
+    enabled: yes

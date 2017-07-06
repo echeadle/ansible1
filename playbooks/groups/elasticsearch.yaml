@@ -1,0 +1,5 @@
+---
+- hosts: elk1.echeadle.info
+  user: echeadle
+  roles:
+  - {role: elasticsearch }
