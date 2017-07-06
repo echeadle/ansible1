@@ -1,0 +1,6 @@
+---
+- hosts: proxy
+  user: echeadle
+  roles:
+  - common
+  - proxy

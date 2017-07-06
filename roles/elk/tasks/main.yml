@@ -1,0 +1,5 @@
+---
+# tasks file for elk
+- name: install elk
+  hosts: elastic
+  

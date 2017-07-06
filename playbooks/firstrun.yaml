@@ -1,0 +1,39 @@
+---
+- hosts: elk
+  user: root
+  vars:
+    users:
+      - ansible
+      - echeadle
+  tasks:
+  - name: Ensure ansible user exists
+    user:
+      name: '{{ item }}'
+      state: present
+      comment: Ansible
+    with_items:
+      - '{{ users }}'
+  - name: Ensure ansible user accepts the SSH key
+    authorized_key:
+      user: ansible
+      key: "{{ lookup('file', 'keys/id_rsa.pub') }}"
+      state: present
+  - name: Ensure ansible user accepts the SSH key
+    authorized_key:
+      user: echeadle
+      key: "{{ lookup('file', '/home/echeadle/.ssh/id_rsa.pub') }}"
+      state: present
+  - name: Ensure the ansible user is sudoer with no password required
+    lineinfile:
+      dest: /etc/sudoers
+      state: present
+      regexp: '^ansible ALL\='
+      line: 'ansible ALL=(ALL) NOPASSWD:ALL'
+      validate: 'visudo -cf %s'
+  - name: Ensure the echeadle user is sudoer with no password required
+    lineinfile:
+      dest: /etc/sudoers
+      state: present
+      regexp: '^echeadle ALL\='
+      line: 'echeadle ALL=(ALL) NOPASSWD:ALL'
+      validate: 'visudo -cf %s'

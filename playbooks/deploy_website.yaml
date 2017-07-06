@@ -1,0 +1,21 @@
+---
+- hosts: webserver
+  remote_user: echeadle
+  gather_facts: True
+  tasks:
+    - name: Ensure the website is present and updated
+      template:
+        src: index.html.j2
+        dest: /var/www/html/index.html
+        owner: root
+        group: root
+        mode: 0644
+      become: True
+
+    - name: Ensure http can pass the firewall
+      firewalld:
+        service: http
+        state: enabled
+        permanent: True
+        immediate: True
+      become: True

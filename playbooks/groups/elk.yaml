@@ -1,0 +1,6 @@
+---
+- hosts: elk
+  user: echeadle
+  roles:
+  - {role: common }
+  - {role: openjdk }

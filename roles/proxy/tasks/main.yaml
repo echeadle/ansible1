@@ -1,0 +1,19 @@
+---
+- name: Ensure the Squid Proxy is installed
+  yum:
+    name: squid
+    state: present
+  become: True
+- name: Ensure the Squid Proxy is enabled and running
+  service:
+    name: squid
+    state: started
+    enabled: True
+  become: True
+- name: Ensure HTTP can pass the firewall
+  firewalld:
+    service: http
+    state: enabled
+    permanent: True
+    immediate: True
+  become: True

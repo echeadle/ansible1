@@ -1,0 +1,5 @@
+---
+- include: playbooks/groups/database.yaml
+- include: playbooks/groups/webserver.yaml
+- include: playbooks/groups/proxys.yaml
+- include: playbooks/groups/elastic.yaml

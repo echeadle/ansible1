@@ -1,0 +1,9 @@
+---
+# tasks file for openjdk
+- name: install openjdk
+  yum:
+    name: "{{ item }}"
+    state: present
+  become: True
+  with_items:
+    - java-1.8.0-openjdk
