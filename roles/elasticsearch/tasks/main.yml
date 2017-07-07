@@ -20,9 +20,4 @@
     name: elasticsearch
     state: present
   become: true
-
-- name: Start elasticsearch
-  service: 
-    name: elasticsearch
-    state: started 
-    enabled: yes
+  notify: start elasticsearch 

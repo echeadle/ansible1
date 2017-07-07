@@ -1,5 +1,8 @@
 ---
-- hosts: elk1.echeadle.info
+- hosts: elastic
+  gather_facts: true
   user: echeadle
   roles:
+  - {role: common }
+  - {role: openjdk }
   - {role: elasticsearch }
