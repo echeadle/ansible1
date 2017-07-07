@@ -1,0 +1,12 @@
+---
+- hosts: all
+  gather_facts: true
+  remote_user: echeadle
+  tasks:
+  - name: Update Local hosts
+    yum:
+      name: "*"
+      state: latest
+    when: ansible_os_family == 'RedHat' 
+    become: True
+
