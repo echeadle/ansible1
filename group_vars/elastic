@@ -1,0 +1,4 @@
+---
+cluster_name: ElkSearch_cluster1
+index_no_shards: 5
+index_no_replicas: 0

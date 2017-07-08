@@ -1,0 +1,31 @@
+---
+- name: debug elasticsearch install host 1
+  hosts: elk1.echeadle.info
+  gather_facts: true
+
+  tasks:
+  - name: cluster name
+    debug:
+      msg: "{{ cluster_name }}"
+
+  - name: host 1 ip
+    debug:
+     msg: "{{ network_host }}"
+
+  - name: node name
+    debug:
+      msg: "{{ node_name }}"
+
+- name: debug elasticsearch install host 1
+  hosts: elk2.echeadle.info
+  gather_facts: true
+
+  tasks:
+  - name: host 2 ip
+    debug:
+     msg: "{{ network_host }}"
+
+  - name: node name
+    debug:
+      msg: "{{ node_name }}"
+
