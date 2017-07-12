@@ -1,16 +1,7 @@
-Role Name  elasticsearch
+Role Name
 =========
-Notes:
-In anslible playbook Add:
-Firewall Commands:
-firewall-cmd --permanent --add-port=9200/tcp
-firewall-cmd --reload
 
-Remove multicast.enabled statement from elasticsearch.yml
-
-Installs Elasticsearch
-
-
+A brief description of the role goes here.
 
 Requirements
 ------------
